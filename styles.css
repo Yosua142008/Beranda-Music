@@ -1,0 +1,228 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ff4081;
+}
+
+/* Transition Card */
+.track-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.track-card:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.6);
+}
+
+.album-art {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover .album-art {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.6);
+}
+
+.track-card h3,
+.track-card p {
+  transition: color 0.3s ease;
+}
+
+.track-card:hover h3,
+.track-card:hover p {
+  color: #ff4081;
+}
+
+/* Animasi hover hanya untuk perangkat yang mendukung hover */
+@media (hover: hover) {
+  .track-card:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .album-art:hover {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Perangkat layar sentuh: Tidak ada hover */
+@media (hover: none) {
+  .track-card {
+    transform: none;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .album-art {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Hamburger Button */
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle:focus {
+  outline: none;
+}
+
+/* Mobile Menu Styles */
+nav ul.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: transform 0.4s ease;
+  transform: translateX(-100%);
+  z-index: 100;
+}
+
+nav ul.mobile-menu.active {
+  transform: translateX(0);
+  display: flex;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.featured {
+  margin-top: 20px;
+}
+
+.featured h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.track-cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+  max-width: 1200px;
+}
+
+.track-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.album-art {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .track-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
